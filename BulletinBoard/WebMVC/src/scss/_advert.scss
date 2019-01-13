@@ -1,0 +1,1244 @@
+﻿@media only screen and (min-width: 1024px) {
+    .advert-page {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+    }
+
+    .advert-page-sidebar {
+        width: 276px;
+        min-height: 400px;
+        max-height: 450px;
+        border: 2px solid #e1e1e1;
+        border-left: none;
+        padding: 12px;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 30px;
+        width: calc(20% - 30px);
+        height: 80px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(5n-4) {
+            margin-left: 20px;
+        }
+
+        &:nth-child(5n) {
+            margin-right: 20px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 12px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .comment-header-date {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 52px;
+        font-size: 14px;
+    }
+
+    .show-all-comments {
+        font-size: 16px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: calc(100% - 30px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1023px) {
+    .advert-page {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 260px);
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+    }
+
+    .advert-page-sidebar {
+        width: 260px;
+        min-height: 400px;
+        max-height: 450px;
+        border: 2px solid #e1e1e1;
+        border-left: none;
+        padding: 12px;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(25% - 20px);
+        height: 95px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(4n-3) {
+            margin-left: 20px;
+        }
+
+        &:nth-child(4n) {
+            margin-right: 20px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 12px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .comment-header-date {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 52px;
+        font-size: 14px;
+    }
+
+    .show-all-comments {
+        font-size: 16px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: calc(100% - 30px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 899px) {
+    .advert-page {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 260px);
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+    }
+
+    .advert-page-sidebar {
+        width: 260px;
+        min-height: 400px;
+        max-height: 450px;
+        border: 2px solid #e1e1e1;
+        border-left: none;
+        padding: 12px;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(33% - 20px);
+        height: 105px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(4n-3) {
+            margin-left: 20px;
+        }
+
+        &:nth-child(4n) {
+            margin-right: 20px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 12px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .comment-header-date {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 52px;
+        font-size: 14px;
+    }
+
+    .show-all-comments {
+        font-size: 16px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: calc(100% - 30px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 799px) {
+    .advert-page {
+        display: flex;
+        flex-direction: column;        
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        order: 2;
+    }
+
+    .advert-page-sidebar {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-bottom: none;
+        padding: 12px;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(25% - 20px);
+        height: 100px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(4n-3) {
+            margin-left: 12px;
+        }
+
+        &:nth-child(4n) {
+            margin-right: 12px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 4px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .comment-header-date {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 52px;
+        font-size: 14px;
+    }
+
+    .show-all-comments {
+        font-size: 16px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: calc(100% - 30px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (min-width: 540px) and (max-width: 649px) {
+    .advert-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        order: 2;
+    }
+
+    .advert-page-sidebar {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-bottom: none;
+        padding: 12px;
+        order: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(25% - 20px);
+        height: 85px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(4n-3) {
+            margin-left: 12px;
+        }
+
+        &:nth-child(4n) {
+            margin-right: 12px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 4px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .comment-header-date {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 52px;
+        font-size: 14px;
+    }
+
+    .show-all-comments {
+        font-size: 16px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: calc(100% - 30px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px 24px;
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (min-width: 420px) and (max-width: 539px) {
+    .advert-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        order: 2;
+    }
+
+    .advert-page-sidebar {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-bottom: none;
+        padding: 12px;
+        order: 1;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(50% - 20px);
+        height: 120px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(2n-1) {
+            margin-left: 12px;
+        }
+
+        &:nth-child(2n) {
+            margin-right: 12px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 4px 0;
+    }
+
+    .comment {
+        margin: 0 16px;
+        padding: 0 16px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 12px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 36px;
+    }
+
+    .replies {
+        margin: 0 16px 0px 72px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .comment-header-date {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 0;
+        font-size: 12px;
+    }
+
+    .show-all-comments {
+        font-size: 12px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: 5px;
+        background-size: 24px 24px;
+        width: 40px;
+        height: 40px;
+        border: 2px solid DarkGray;
+        border-radius: 50%;
+        align-self: center;
+        margin: 12px 8px;
+    }
+}
+
+@media only screen and (max-width: 419px) {
+    .advert-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-page-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        order: 2;
+    }
+
+    .advert-page-sidebar {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-bottom: none;
+        padding: 12px;
+        order: 1;
+    }
+
+    .advert-page-small-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .advert-page-small-photo {
+        margin-right: 6px;
+        margin-left: 6px;
+        margin-top: 30px;
+        width: calc(50% - 20px);
+        height: 90px;
+        object-position: center;
+        border: 2px solid #e1e1e1;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:nth-child(2n-1) {
+            margin-left: 12px;
+        }
+
+        &:nth-child(2n) {
+            margin-right: 12px;
+        }
+    }
+
+    .advert-page-sidebar-price,
+    .advert-page-sidebar-advert-number,
+    .advert-page-sidebar-publish-date,
+    .advert-page-sidebar-author,
+    .advert-page-sidebar-author-name,
+    .advert-page-sidebar-phone-number,
+    .advert-page-sidebar-address {
+        margin: 4px 0;
+    }
+
+    .comment {
+        margin: 0 8px;
+        padding: 0 8px;
+    }
+
+    .reply {
+        padding: 4px 16px 4px 16px;
+    }
+
+    .reply-box {
+        margin: 16px 0 0px 52px;        
+    }
+
+    .replies {
+        margin: 0 16px 0px 16px;
+        padding-top: 8px;        
+    }
+
+    .comment-header-author-name {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .comment-header-date {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .comment-text {
+        padding: 8px 0 8px 0;
+        font-size: 12px;
+    }
+
+    .show-all-comments {
+        font-size: 12px;
+    }
+
+    .add-comment-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .add-comment-text {
+        font-size: 12px;
+        padding: 12px;
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        resize: vertical;
+
+        &::placeholder {
+            color: #B2B2B2;
+            opacity: 1;
+        }
+    }
+
+    .add-comment-submit {
+        cursor: pointer;
+        border: none;
+        background-image: url('/images/icons/send-comment.png');
+        background-color: #FFF;
+        background-repeat: no-repeat;
+        background-position: 5px;
+        background-size: 24px 24px;
+        width: 40px;
+        height: 40px;
+        border: 2px solid DarkGray;
+        border-radius: 50%;
+        align-self: center;
+        margin: 12px 8px;
+    }
+}
+
+// Общие стили
+.advert-page-photos {
+    width: 100%;
+}
+
+.advert-page-big-photo {
+    width: 100%;
+}
+
+.advert-page-big-photo-image {
+    width: 100%;
+}
+
+.advert-page-small-photo-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.advert-page-information {
+    width: 100%;
+    padding: 0 24px 0 24px;
+}
+
+.advert-page-information-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.advert-page-information-text {
+    line-height: 22px;
+    font-size: 14px;
+}
+
+.show-all-comments {
+    background-color: #e7e7e7;
+    height: 40px;
+    border-radius: 20px;
+    color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 24px 24px 24px;
+    width: calc(100% - 48px);
+
+    &:hover {
+        cursor: pointer;
+        background-color: #f2f2f2;
+    }
+}
+
+.advert-page-comments {
+    width: 700px;
+    padding: 0 24px 0 24px;
+}
+
+.advert-page-comments-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.advert-page-sidebar-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.advert-page-sidebar-price-title,
+.advert-page-sidebar-advert-number-title,
+.advert-page-sidebar-publish-date-title,
+.advert-page-sidebar-author-name-title,
+.advert-page-sidebar-phone-number-title,
+.advert-page-sidebar-address-title {
+    font-weight: bold;
+    color: #000;
+}
+
+.advert-page-sidebar-price-value,
+.advert-page-sidebar-advert-number-value,
+.advert-page-sidebar-publish-date-value,
+.advert-page-sidebar-author-name-value,
+.advert-page-sidebar-phone-number-value,
+.advert-page-sidebar-address-value {
+    margin-top: 4px;
+    line-height: 22px;
+    font-size: 14px;
+    color: grey;
+}
+
+.advert-page-sidebar-edit {
+    margin-bottom: 12px;
+}
+
+// Cooments
+.comments-block {
+    width: 100%;
+}
+
+.comments-block-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 16px 0 0 24px;
+}
+
+.add-comment {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add-comment-button {
+    height: 35px;
+    width: 200px;
+    background-color: #32CD32;
+    font-size: 16px;
+    color: white;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-comment-button:hover {
+    cursor: pointer;
+}
+
+.comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.comment-header-author-image-block {
+    width: 36px;
+    height: 36px;
+    border-radius: 20px;
+    background-color: #00b1ff;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.comment-header-author-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.comment-header-author-name-and-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 12px;
+    height: 36px;
+}
+
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 15px;
+    width: 100%;
+    //margin-top: 12px;
+}
+
+.comment-actions-delete {
+    margin-left: 16px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url('/images/icons/rubbish-bin.png');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        text-decoration: underline;
+        background-size: 20px;
+    }
+}
+
+.comment-action-reply {
+    margin-left: 16px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url('/images/icons/reply.png');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        text-decoration: underline;
+        background-size: 20px;
+        cursor: pointer;
+    }
+}
+
+.comment-action-like {
+    margin-left: 4px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url('/images/icons/like-icon.png');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-size: 20px;
+        cursor: pointer;
+    }
+}
+
+.comment-action-like-active {
+    margin-left: 4px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url('/images/icons/like-icon-active.png');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-size: 20px;
+        cursor: pointer;
+    }
+}
+
+.comment-action-like-disable {
+    margin-left: 4px;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-image: url('/images/icons/like-icon.png');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.comment-likes-number {
+    display: block;
+    line-height: 20px;
+    text-align: center;
+    width: 20px;
+    color: gray;
+    font-size: 14px;
+}
+
+.add-comment-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.add-comment-block {
+    width: 100%;
+    padding: 16px 24px;
+}
+
+.reply:before {
+    position: relative;
+    display: block;
+    height: 0;
+    width: 0;
+    right: 28px;
+    top: 0px;
+    font-size: 36px;
+    content: "\21D1";
+    color: #a1a1a1;
+}

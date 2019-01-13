@@ -1,0 +1,14 @@
+﻿@if (ViewBag.Good != null)
+{
+    <center>
+        <h3>Возникли следующие ошибки:</h3>
+        <ul>
+            @foreach (var s in ViewBag.Good)
+            {
+                <li>@s</li>
+
+            }
+        </ul>
+        
+    </center>
+}

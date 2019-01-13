@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model WebMVC.Models.CategoryAdvertsViewModel
+@{
+    ViewData["Title"] = Model.СategoryName;
+}
+
+@if (Model.SubcategoriesNameAndUrlDictionary != null)
+{
+    <ul class="subcategories-list">
+        @foreach (var subcategory in Model.SubcategoriesNameAndUrlDictionary)
+        {
+            <li class="subcategories-list-item">
+                <a href="/categories/@subcategory.Value" class="subcategories-list-item-link">@subcategory.Key</a>
+            </li>
+        }
+    </ul>
+}
+
+<h1 class="page-header">@Model.СategoryName</h1>
+@if (Model.AdvertsList.Count() != 0)
+{
+    <div class="adverts">
+        @foreach (var item in Model.AdvertsList)
+        {
+            <div class="advert">
+                <div class="advert-photo">
+                    <img src="/images/adverts-images/@item.PrimaryImageUrl" class="advert-photo-image">
+                </div>
+                <div class="advert-title">
+                    <a href="/advert/@item.Id" class="advert-title-link">@item.Title</a>
+                </div>
+                <div class="advert-price">
+                    <p class="advert-price-text">@item.Price.ToString("N2") ₽</p>
+                </div>
+                <div class="advert-date">
+                    <p class="advert-date-text">@item.PublicationDate.ToLongDateString()</p>
+                </div>
+                <div class="advert-short-description">
+                    <p class="advert-short-description-text">@item.ShortDescription</p>
+                </div>
+            </div>
+        }
+    </div>
+    @if (Model.categoryAdvertsNumber > Model.advertsPerPageNumber)
+    {
+        <div class="pagination-block">
+            <ul class="pagination-block-list">
+                @for (int i = 1; i <= Math.Ceiling((double)Model.categoryAdvertsNumber / (double)Model.advertsPerPageNumber); i++)
+                {
+                    <li class="pagination-block-list-item">
+                        <a href="/categories/@Model.СategoryUrl?pageNumber=@i" class="@(Model.PageNumber == i ? "pagination-block-list-item-link-active" : "pagination-block-list-item-link")">@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <p>@Localizer["emptyCategory"]</p>
+}

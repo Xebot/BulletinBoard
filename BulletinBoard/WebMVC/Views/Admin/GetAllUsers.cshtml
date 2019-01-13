@@ -1,0 +1,83 @@
+﻿@model List<WebApi.Contracts.DTO.UserDto>
+
+@Html.Partial("_UserErrors")
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Имя пользователя
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Регион
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Роль
+            </th>
+
+            <th>
+                Дать роль Администратора
+            </th>
+            <th>
+                Разжаловать в Пользователи
+            </th>
+            <th>
+                Забанить
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserRegion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @foreach (var t in item.UserRole)
+                    {
+                        @t <text> | </text>                        
+                    }                    
+                </td>
+                
+                <td>
+                    @if (!item.UserRole.Contains("Admin"))
+                    {
+                        <a href="MakeUserAdmin/@item.Id">Сделать Админом</a>
+                    }                    
+                </td>
+                <td>
+                    @if (item.UserRole.Contains("Admin"))
+                    {
+                        <a href="UnMakeUserAdmin/@item.Id">Разжаловать</a>
+                    }                    
+                </td>
+                <td>                   
+                    @if (item.UserStatus != "banned")
+                    {   
+                        <a href="BanUser/@item.Id">Забанить</a> 
+                    }
+                    else
+                    {
+                        <a href="BanUser/@item.Id">Разбанить</a>
+
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

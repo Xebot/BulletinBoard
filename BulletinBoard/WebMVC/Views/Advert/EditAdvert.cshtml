@@ -1,0 +1,300 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model WebMVC.Models.EditAdvertViewModel
+
+@{
+    ViewData["Title"] = @Localizer["pageTitle"];
+}
+
+<h1 class="page-header">@Localizer["pageHeader"]: @Model.Title</h1>
+<div class="edit-advert">
+    <form class="advert-form" action="/edit-advert/@Model.Id" method="Post" enctype="multipart/form-data">
+        <div class="advert-form-contacts">
+            <p class="advert-form-contacts-header">@Localizer["contactInformation"]</p>
+            <div class="advert-form-contacts-email">
+                <label for="advert-form-contacts-email-input" class="advert-form-contacts-email-lable">@Localizer["email"]</label>
+                <input type="email" name="Email" id="advert-form-contacts-email-input" value="@Model.Email" readonly>
+            </div>
+            <div class="advert-form-contacts-user-name">
+                <label for="advert-form-contacts-user-name-input" class="advert-form-contacts-user-name-lable">@Localizer["authorName"]</label>
+                <input type="text" name="UserName" id="advert-form-contacts-user-name-input" value="@Model.UserName" readonly>
+            </div>
+            <div class="advert-form-contacts-phone">
+                <label for="advert-form-contacts-phone-input" class="advert-form-contacts-phone-lable">@Localizer["phone"]</label>
+                <input type="text" name="Phone" id="advert-form-contacts-phone-input" value="@Model.Phone" readonly>
+            </div>
+        </div>
+        <div class="advert-form-title">
+            <label for="advert-form-title-input" class="advert-form-title-lable">@Localizer["advertTitle"]</label>
+            <input type="text" name="Title" id="advert-form-title-input" value="@Model.Title">
+            <label class="error"><span asp-validation-for="Title"></span></label>
+        </div>
+        <div class="advert-form-status">
+            <label class="advert-form-status-lable">@Localizer["status"]</label>
+            <div class="advert-form-status-container">
+                <div class="advert-form-status-radio-container">
+                    <input type="radio" name="Status" class="advert-form-status-radio" id="advert-form-status-radio-published" value="Published" @(Model.Status == "Published" ? "checked" : "") />
+                    <label for="advert-form-status-radio-published" class="advert-form-status-published-lable">@Localizer["statusActive"]</label>
+                </div>
+                <div class="advert-form-status-radio-container">
+                    <input type="radio" name="Status" class="advert-form-status-radio" id="advert-form-status-radio-unactive" value="Unactive" @(Model.Status == "Unactive" ? "checked" : "") />
+                    <label for="advert-form-status-radio-unactive" class="advert-form-status-unactive-lable">@Localizer["statusUnactive"]</label>
+                </div>
+                <div class="advert-form-status-radio-container">
+                    <input type="radio" name="Status" class="advert-form-status-radio" id="advert-form-status-radio-deleted" value="Deleted" @(Model.Status == "Deleted" ? "checked" : "") />
+                    <label for="advert-form-status-radio-deleted" class="advert-form-status-deleted-lable">@Localizer["statusDeleted"]</label>
+                </div>
+            </div>
+        </div>
+        <div class="advert-form-category">
+            <label class="advert-form-category-lable">@Localizer["category"]</label>
+            <div class="select-category-container">
+                <select class="select-category" name="CategoryId">
+                    @foreach (var category in Model.CategoriesListWithSubcategories)
+                    {
+                        if (category.CategoryId != 1)
+                        {
+                            <option value="@category.CategoryId" style="color: #333; background-color: #C0C0C0;" disabled>@category.CategoryName</option>
+                            foreach (var subcategory in category.Subcategories)
+                            {
+                                if (Model.CategoryId == subcategory.Key)
+                                {
+                                    <option value="@subcategory.Key" selected>@subcategory.Value</option>
+                                }
+                                else
+                                {
+                                    <option value="@subcategory.Key">@subcategory.Value</option>
+                                }
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="advert-form-region">
+            <label class="advert-form-region-lable">@Localizer["region"]</label>
+            <div class="select-region-container">
+                <select class="select-region" name="RegionId">
+                    @foreach (var region in Model.Regions)
+                    {
+                        if (Model.RegionId == region.Key)
+                        {
+                            <option value="@region.Key" selected>@region.Value</option>
+                        }
+                        else
+                        {
+                            <option value="@region.Key">@region.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="advert-form-price">
+            <label for="advert-form-price-input" class="advert-form-price-lable">@Localizer["price"]</label>
+            <input type="text" name="Price" id="advert-form-price-input" value="@Model.Price.ToString()">
+            <label class="error"><span asp-validation-for="Price"></span></label>
+        </div>
+        <div class="advert-form-address">
+            <label for="advert-form-address-input" class="advert-form-address-lable">@Localizer["address"]</label>
+            <input type="text" name="Address" id="advert-form-address-input" value="@Model.Address">
+            <label class="error"><span asp-validation-for="Address"></span></label>
+        </div>
+        <div class="advert-form-short-description">
+            <label for="advert-form-short-description-input" class="advert-form-short-description-lable">@Localizer["shortDescription"]</label>
+            <textarea rows="3" name="ShortDescription" id="advert-form-short-description-input">@Model.ShortDescription</textarea>
+            <label class="error"><span asp-validation-for="ShortDescription"></span></label>
+        </div>
+        <div class="advert-form-description">
+            <label for="advert-form-description-input" class="advert-form-description-lable">@Localizer["description"]</label>
+            <textarea rows="8" name="Description" id="advert-form-description-input">@Model.Description</textarea>
+            <label class="error"><span asp-validation-for="Description"></span></label>
+        </div>
+        <div class="advert-form-primary-photo">
+            <label for="AdvertPrimaryImage" class="advert-form-primary-photo-lable">@Localizer["changeMainImage"]</label>
+            <input type="file" name="AdvertPrimaryImage" accept="image/*,image/jpeg" id="advert-form-primary-photo-input">
+        </div>
+        <div class="advert-form-photos">
+            <label for="AdvertImages" class="advert-form-photos-lable">@Localizer["addAdditionalImages"]</label>
+            <input type="file" name="AdvertImages" accept="image/*,image/jpeg" multiple id="advert-form-photos-input">
+        </div>
+
+        <div class="advert-form-added-photos-preview">
+            <p class="advert-form-added-photos-header">@Localizer["previewUploadPhotosHeader"]</p>
+            <div class="advert-form-added-primary-photo-preview" default-src="@Model.PrimaryImageUrl">
+                <img src="/images/adverts-images/@Model.PrimaryImageUrl" class="advert-form-added-primary-photo-preview-image">
+            </div>
+            @foreach (var imageUrl in Model.ImagesUrl.Split("||".ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
+            {
+                <div class="advert-photo-in-db">
+                    <img src="/images/adverts-images/@imageUrl" class="advert-photo-in-db-image">
+                    <div class="advert-photo-rubbish-bin-icon" image-url="@imageUrl" deleted-status="false"></div>
+                    <img src="/images/crossed-lines.png" class="advert-photo-in-db-crossed-lines">
+                </div>
+            }
+            <div class="advert-form-added-photos-preview-info">
+                <p class="main-image-info">
+                    <span class="main-image-info-square"></span>
+                    <span class="main-image-info-separator">—</span>
+                    <span class="main-image-info-text">@Localizer["mainImageText"]</span>
+                </p>
+                <p class="additional-image-info">
+                    <span class="additional-image-info-square"></span>
+                    <span class="additional-image-info-separator">—</span>
+                    <span class="additional-image-info-text">@Localizer["downloadingAdditionalImagesText"]</span>
+                <p class="downloaded-additional-image-info">
+                    <span class="downloaded-additional-image-info-square"></span>
+                    <span class="downloaded-additional-image-info-separator">—</span>
+                    <span class="downloaded-additional-image-info-text">@Localizer["downloadedAdditionalImagesText"]</span>
+                </p>
+            </div>
+        </div>
+        <input type="hidden" name="DeletedAdvertImages" value="" id="advert-form-deleted-images">
+        <input type="hidden" name="Id" value="@Model.Id">
+        <input type="submit" value="@Localizer["confirm"]" id="advert-form-submit-button">
+    </form>
+    <div class="neavito-rules">
+        <p>@Localizer["ruleOne"] <a href="#">@Localizer["ruleOneLinkName"]</a>.</p>
+        <p>@Localizer["ruleTwo"]. <a href="#">@Localizer["ruleTwoLinkName"]</a></p>
+        <p>@Localizer["ruleThree"].</p>
+        <p>@Localizer["ruleFour"] <a href="#">@Localizer["ruleFourLinkName"]</a>.</p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //Добавить урл картинки в поле удаляемых картинок
+        $(".advert-photo-rubbish-bin-icon").click(function () {
+            var status = $(this).attr("deleted-status");
+            var deletedImagesInputValue = $("#advert-form-deleted-images").val();
+            var imageUrl = $(this).attr("image-url");
+            if (status == "false") {
+                $("#advert-form-deleted-images").val(deletedImagesInputValue + "||" + imageUrl);
+                $(this).parent().children(".advert-photo-in-db-crossed-lines").css("display", "block");
+                $(this).css("background-image", "url('/images/icons/return.png'");
+                $(this).attr("deleted-status", "true");
+            }
+            else {
+                if (deletedImagesInputValue.indexOf(imageUrl) != -1) {
+                    var newInputValue = deletedImagesInputValue.replace("||" + imageUrl, '');
+                    $(this).parent().children(".advert-photo-in-db-crossed-lines").css("display", "none");
+                    $(this).css("background-image", "url('/images/icons/delete.png'");
+                    $("#advert-form-deleted-images").val(newInputValue);
+                }
+                $(this).attr("deleted-status", "false");
+            }
+        });
+
+        //Отображение главного изображения
+        $("#advert-form-primary-photo-input").change(function () {
+            var image = $("#advert-form-primary-photo-input")[0].files[0];
+            if (image) {
+                $(".advert-form-added-primary-photo-preview-image").remove();
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(".advert-form-added-primary-photo-preview").append(`
+                        <img src='` + e.target.result + `' class='advert-form-added-primary-photo-preview-image'>
+                    `);
+                }
+                reader.readAsDataURL(image);
+            }
+            else {
+                $(".advert-form-added-primary-photo-preview-image").remove();
+                var defaultImgSrc = $(".advert-form-added-primary-photo-preview").attr("default-src");
+                $(".advert-form-added-primary-photo-preview").append(`
+                    <img src='/images/adverts-images/` + defaultImgSrc + `' class='advert-form-added-primary-photo-preview-image'>
+                `);
+            }
+        });
+
+        //Отображение дополнительных изображений
+        $("#advert-form-photos-input").change(function () {
+            var imagesArray = $("#advert-form-photos-input")[0].files;
+            if (imagesArray.length != 0) {
+                $(".advert-form-added-photos-preview").removeClass("advert-form-added-photos-preview-hidden");
+                $(".advert-form-added-photo-preview").remove();
+                for (var i = 0; i < imagesArray.length; i++) {
+                    if (imagesArray[i]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $(".advert-form-added-primary-photo-preview").after(`
+                                <div class='advert-form-added-photo-preview'>
+                                    <img src='` + e.target.result + `' class='advert-form-added-photo-preview-image'>
+                                </div>
+                            `);
+                        }
+                        reader.readAsDataURL(imagesArray[i]);
+                    }
+                }
+            }
+            else {
+                $(".advert-form-added-photo-preview").remove();
+                if ($('.advert-form-added-primary-photo-preview').length == 0) {
+                    $(".advert-form-added-photos-preview").addClass("advert-form-added-photos-preview-hidden");
+                }
+            }
+        });
+
+        //валидация формы
+        var language = '@System.Globalization.CultureInfo.CurrentCulture.Name';
+        $('.advert-form').validate({
+            rules: {
+                Title: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 80
+                },
+                Price: {
+                    required: true,
+                    isPriceFormat: true
+                },
+                Address: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 200
+                },
+                ShortDescription: {
+                    required: true,
+                    minlength: 20,
+                    maxlength: 400
+                },
+                Description: {
+                    required: true,
+                    minlength: 50,
+                    maxlength: 10000
+                }
+            },
+            messages: {
+                Title: {
+                    required: "@Localizer["requireField"]",
+                    minlength: "@Localizer["titleMinLength"]",
+                    maxlength: "@Localizer["titleMaxLength"]"
+                },
+                Price: {
+                    required: "@Localizer["requireField"]",
+                    isPriceFormat: "@Localizer["priceFormat"]"
+                },
+                Address: {
+                    required: "@Localizer["requireField"]",
+                    minlength: "@Localizer["addressMinLength"]",
+                    maxlength: "@Localizer["addressMaxLength"]"
+
+                },
+                ShortDescription: {
+                    required: "@Localizer["requireField"]",
+                    minlength: "@Localizer["shortDescriptionMinLength"]",
+                    maxlength: "@Localizer["shortDescriptionMaxLength"]"
+                },
+                Description: {
+                    required: "@Localizer["requireField"]",
+                    minlength: "@Localizer["descriptionMinLength"]",
+                    maxlength: "@Localizer["descriptionMaxLength"]"
+                }
+            }
+        });
+
+        $.validator.addMethod('isPriceFormat', function (value) {
+            return /^\d+[,.]\d{2}$/.test(value);
+        }, "Не верный формат цены (X,XX)");
+
+    });
+</script>

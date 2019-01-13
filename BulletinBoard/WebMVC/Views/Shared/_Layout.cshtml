@@ -1,0 +1,196 @@
+﻿@using Microsoft.AspNetCore.Mvc.Routing
+@using Authentication.AppServices.Extensions
+@using Microsoft.AspNetCore.Mvc.Localization;
+
+
+
+@using System.Net.Http;
+@using WebApi.Contracts.DTO;
+@using System.IO;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Hosting;
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery-ui.js"></script>
+    <script src="~/lib/jquery/dist/jquery.maskedinput.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/js/site.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    @*
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.6.3/umd/react.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.6.3/umd/react-dom.production.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    *@
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <script src="~/js/app.jsx" type="text/babel">
+    </script>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/style.min.css" />
+        <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <header id="header">
+        <div class="header-container">
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-logo">
+                        <a href="/" class="header-logo-link"></a>
+                    </div>
+                    <div class="header-categories">
+                        <ul class="header-categories-list">
+                            <li class="header-categories-list-item">
+                                <a href="/categories/transport" class="header-categories-list-link">@Localizer["categoryTransport"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/realty" class="header-categories-list-link">@Localizer["categoryRealty"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/services" class="header-categories-list-link">@Localizer["categoryServices"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/animals" class="header-categories-list-link">@Localizer["categoryAnimals"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/personal-things" class="header-categories-list-link">@Localizer["categoryPersonalThings"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/for-home-and-garden" class="header-categories-list-link">@Localizer["categoryForHomeAndGarden"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/electronics" class="header-categories-list-link">@Localizer["categoryElectronics"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/hobbies-and-leisure" class="header-categories-list-link">@Localizer["categoryHobbiesAndLeisure"]</a>
+                            </li>
+                            <li class="header-categories-list-item">
+                                <a href="/categories/for-business" class="header-categories-list-link">@Localizer["categoryForBusiness"]</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-control-panel">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a class="header-login-button" asp-controller="Authorization" asp-action="SignIn">
+                                @Localizer["logIn"]
+                            </a>
+                            <a class="header-send-advertisement-button" asp-controller="Authorization" asp-action="SignUp">
+                                @Localizer["signUp"]
+                            </a>
+                        }
+                        else
+                        {
+                            <div class="header-login-button">
+                                @User.GetUserFIO()
+                                <div class="submenu">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <div><a asp-controller="Admin" asp-action="Index">@Localizer["account"]</a></div>
+                                        <div><a asp-controller="Admin" asp-action="GetAllUsers">@Localizer["users"]</a></div>
+                                    }
+                                    else
+                                    {
+                                        <div><a asp-controller="User" asp-action="Index">@Localizer["account"]</a></div>
+                                    }
+                                    <div><a asp-controller="User" asp-action="UserInfo">@Localizer["personalData"]</a></div>
+                                    <div><a asp-controller="Authorization" asp-action="SignOut">@Localizer["exit"]</a></div>
+                                </div>
+                            </div>
+                            <a href="/add-advert" class="header-send-advertisement-button">
+                                @Localizer["postAdvert"]
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="header-bottom">
+                    <form action="/Home/Find" method="get">
+                        <div class="header-search-form">
+                            <div class="header-search-form-main-parameters">
+                                <div class="header-search-form-select-category">
+                                    <select class="header-search-form-select-category-input" name="СategoryId" id="selectCategory"></select>
+                                </div>
+                                <div class="header-search-form-searched-text">
+                                    <input type="text" name="searchedText" class="header-search-form-searched-text-input" id="searchedText" placeholder="@Localizer["search"]">
+                                </div>
+                                <div class="header-search-form-select-region">
+                                    <select class="header-search-form-select-region-input" name="RegionId" id="selectRegion">
+                                        <option selected>Любой регион</option>
+                                    </select>
+                                </div>
+                                <div class="header-search-form-submit-button">
+                                    <input type="submit" value="@Localizer["find"]" class="header-search-form-submit-button-input">
+                                </div>
+                            </div>
+                            <div class="header-search-form-secondary-parameters">
+                                <div class="header-search-form-checkbox-name">
+                                    <input type="checkbox" class="header-search-form-checkbox-name-input" name="searchOnlyInTitle" value="true">
+                                    <span class="header-search-form-checkbox-name-title">@Localizer["onlyInTitles"]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <div class="header-massege">
+                        <script src="~/js/app.jsx" type="text/babel">
+                        </script>
+                        <div id="massege-informator-box"></div>
+                    </div>                        
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <footer>        
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="footer-left-languages">
+                        <a href="/Home/SetLanguage/?culture=ru&returnUrl=@Context.Request.Path" class="footer-left-languages-link"><img src="/images/icons/russia.png" height="40"></a>
+                        <a href="/Home/SetLanguage/?culture=en&returnUrl=@Context.Request.Path" class="footer-left-languages-link"><img src="~/images/icons/united_kingdom.png" height="40"></a>                       
+                    </div>
+                    <div class="footer-left-social-networks">
+                        <a href="#" class="footer-left-social-networks-link"><img src="/images/icons/vk.png" width="40" height="40"></a>
+                        <a href="#" class="footer-left-social-networks-link"><img src="/images/icons/facebook.png" width="40" height="40"></a>
+                        <a href="#" class="footer-left-social-networks-link"><img src="/images/icons/instagram.png" width="40" height="40"></a>
+                        <a href="#" class="footer-left-social-networks-link"><img src="/images/icons/twitter.png" width="40" height="40"></a>
+                        <a href="#" class="footer-left-social-networks-link"><img src="/images/icons/youtube.png" width="40" height="40"></a>
+                    </div>
+                    <div class="footer-left-copyright">
+                        <a href="#" class="footer-left-copyright-link">NeAvito.com</a>, 2018 — @Localizer["siteIdentity"].
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-right-contacts">
+                        <div class="footer-right-contacts-header">@Localizer["contacts"]:</div>
+                        <div class="footer-right-contacts-phone">+ 79 78 123 45 67</div>
+                        <div class="footer-right-contacts-email">mail@mail.ru</div>
+                    </div>
+                    <div class="footer-right-counters">
+                        <img src="/images/icons/counter.png" height="30">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @*RenderSection("Scripts", required: false)*@
+</body>
+</html>

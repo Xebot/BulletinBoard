@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
+
+@{
+    ViewData["Title"] = @Localizer["pageTitle"];
+}
+
+
+<h1>@Localizer["errorMessage"]</h1>

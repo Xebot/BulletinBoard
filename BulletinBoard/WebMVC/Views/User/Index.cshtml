@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model UserAdvertsViewModel
+@using Authentication.AppServices.Extensions
+
+@{
+    ViewData["Title"] = @Localizer["pageTitle"];
+}
+
+@if (Model != null)
+{
+    <h2 class="page-header">@Localizer["pageHeader"], @User.GetUserName()</h2>
+    <input asp-for="UserId" type="text" name="UserId" value="@Model.UserId" hidden>
+    <div class="adverts">
+
+        @foreach (var item in Model.Ads)
+        {
+            <div class="advert">
+                <div class="advert-photo">
+                    <img src="/images/adverts-images/@item.PrimaryImageUrl" class="advert-photo-image">
+                </div>
+                <div class="advert-title">
+                    <a href="/advert/@item.Id" class="advert-title-link">@item.Title</a>
+                </div>
+                <div class="advert-price">
+                    <p class="advert-price-text">@item.Price.ToString("N2") ₽</p>
+                </div>
+                <div class="advert-date">
+                    <p class="advert-date-text">@item.PublicationDate.ToLongDateString()</p>
+                </div>
+                <div class="advert-short-description">
+                    <p class="advert-short-description-text">@item.ShortDescription</p>
+                </div>
+                <div class="buttons-delete-edit-area">
+                    @if (item.Status == "Published")
+                    {
+                        <a href="/user/Unpublish/@item.Id" class="button-edit">@Localizer["unpublish"]</a>
+                    }
+                    else
+                    {
+                        <a href="/user/Unpublish/@item.Id" class="button-edit">@Localizer["publish"]</a>
+                    }
+                    <a href="/user/delete/@item.Id" class="button-delete">@Localizer["delete"]</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (Model.AdsNumber > Model.advertsPerPageNumber)
+    {
+        <div class="pagination-block">
+            <ul class="pagination-block-list">
+                @for (int i = 1; i <= Math.Ceiling((double)Model.AdsNumber / (double)Model.advertsPerPageNumber); i++)
+                {
+                    <li class="pagination-block-list-item">
+                        <a href="/User/Index?@Model.UserId&pageNumber=@i" class="@(Model.PageNumber == i ? "pagination-block-list-item-link-active" : "pagination-block-list-item-link")">@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            var msg = '@TempData["Error"]';
+            if (msg != '') { alert(msg) }
+        ;
+    });
+</script>
+

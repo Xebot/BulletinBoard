@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\bundle\**" />
+    <Content Remove="wwwroot\bundle\**" />
+    <EmbeddedResource Remove="wwwroot\bundle\**" />
+    <None Remove="wwwroot\bundle\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="src\scripts\app.component.ts" />
+    <None Remove="src\scripts\app.module.ts" />
+    <None Remove="src\scripts\main.ts" />
+    <None Remove="src\scripts\polyfills.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\scss\main.scss" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="jQuery" Version="3.3.1" />
+    <PackageReference Include="jQuery.MaskedInput" Version="1.4.1" />
+    <PackageReference Include="jQuery.Validation" Version="1.17.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0-preview2-35157" PrivateAssets="All" />
+    <PackageReference Include="React.AspNet" Version="3.4.1" />
+    <PackageReference Include="RestSharp" Version="106.5.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleRegister\SimpleRegister.csproj" />
+    <ProjectReference Include="..\WebApi.Contracts\WebApi.Contracts.csproj" />
+    <ProjectReference Include="..\WebApiService\WebApiService.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\adverts-images\" />
+  </ItemGroup>
+
+</Project>

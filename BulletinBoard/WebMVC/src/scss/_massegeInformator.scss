@@ -1,0 +1,336 @@
+﻿@media only screen and (min-width: 380px) {
+    .massege-informator-table {
+        display: block;
+        position: relative;
+        width: 300px;
+        height: 238px;
+        border: 2px solid gray;
+        background-color: white;
+        top: 24px;
+    }
+
+    .massege-informator-table-body-titles-user-name,
+    .massege-informator-table-body-titles-action,
+    .massege-informator-table-body-titles-advert-title {
+        font-size: 10px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+    }
+
+    .massege-informator-table-body-massege-user-name,
+    .massege-informator-table-body-massege-line-action,
+    .massege-informator-table-body-massege-line-action-active,
+    .massege-informator-table-body-massege-line-advert-title {
+        font-size: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        //position: relative;
+    }
+}
+
+@media only screen and (max-width: 379px) {
+    .massege-informator-table {
+        display: block;
+        position: relative;
+        width: 256px;
+        height: 238px;
+        border: 2px solid gray;
+        background-color: white;
+        top: 24px;
+    }
+
+    .massege-informator-table-body-titles-user-name,
+    .massege-informator-table-body-titles-action,
+    .massege-informator-table-body-titles-advert-title {
+        font-size: 9px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+    }
+
+    .massege-informator-table-body-massege-user-name,
+    .massege-informator-table-body-massege-line-action,
+    .massege-informator-table-body-massege-line-action-active,
+    .massege-informator-table-body-massege-line-advert-title {
+        font-size: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        //position: relative;
+    }
+}
+
+#massege-informator-box {
+    position: absolute;
+    top: -28px;
+    right: 0px;
+}
+
+.massege-informator-icon {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    background-image: url('/images/icons/massege-informator.png');
+    background-color: #FFF;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 42px 42px;
+
+    &:hover {
+        cursor: pointer;
+        background-size: 50px 50px;
+    }
+}
+
+.massege-informator-icon-number {
+    height: 12px;
+    width: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+
+
+.massege-informator-table-header {
+    width: 100%;
+    height: 24px;
+    background-color: pink;
+    border-bottom: 2px solid gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.massege-informator-table-header-title {
+    padding-left: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.massege-informator-table-header-close {
+    padding-right: 8px;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.massege-informator-table-body-titles {
+    width: 100%;
+    min-height: 24px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid gray;
+    background-color: AliceBlue;
+}
+
+
+
+.massege-informator-table-body {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.massege-informator-table-body-titles {
+    width: 100%;
+    min-height: 24px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid gray;
+}
+
+.massege-informator-table-body-titles-status {
+    width: 24px;
+}
+
+.massege-informator-table-body-titles-user-name {
+    width: 35%;
+    //border-right: 2px solid gray;
+}
+
+.massege-informator-table-body-titles-action {
+    width: 25%;
+    //border-right: 2px solid gray;
+}
+
+.massege-informator-table-body-titles-advert-title {
+    width: calc(40% - 24px);
+    border-right: 2px solid gray;
+}
+
+.massege-informator-table-body-massege {
+    width: 100%;
+    min-height: 24px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid gray;
+}
+
+
+
+.massege-informator-table-body-massege-line-action,
+.massege-informator-table-body-massege-line-action-active {
+
+    &:hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.massege-informator-table-body-massege-line-action-active {
+    font-weight: bold;
+    color: #32CD32;
+}
+
+.massege-informator-table-body-massege-status-read-over,
+.massege-informator-table-body-massege-status-unread,
+.control-bar-refresh,
+.control-bar-set-all-as-read-over,
+.control-bar-set-all-as-unread {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+
+    &:hover {
+        cursor: pointer;
+        background-size: 18px;
+
+        &::before {
+            position: absolute;
+            content: attr(data-title);
+            border: 1px solid #000;
+            background-color: #FFF;
+            padding: 2px;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.massege-informator-table-body-massege-status-read-over {
+    background-image: url('/images/icons/open-envelope.png');
+
+    &:hover::before {
+        left: 28px;
+        top: 2px;
+        width: 136px;
+    }
+}
+
+.massege-informator-table-body-massege-status-unread {
+    background-image: url('/images/icons/envelope.png');
+
+    &:hover::before {
+        left: 28px;
+        top: 2px;
+        width: 144px;
+    }
+}
+
+.massege-informator-table-body-massege-user-name {
+    width: 35%;
+}
+
+.massege-informator-table-body-massege-line-action,
+.massege-informator-table-body-massege-line-action-active {
+    width: 25%;
+    text-align: center;
+}
+
+.massege-informator-table-body-massege-line-advert-title {
+    width: calc(40% - 24px);
+    border-right: 2px solid gray;
+}
+
+.unread-massege {
+    background-color: #E7E7E7;
+}
+
+.control-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    border-top: 2px solid gray;
+    background-color: #FFF;
+}
+
+.control-bar-refresh {
+    background-image: url('/images/icons/refresh.png');
+
+    &:hover::before {
+        left: 24px;
+        top: 26px;
+        width: 48px;
+    }
+}
+
+.control-bar-set-all-as-read-over {
+    margin-left: 12px;
+    background-image: url('/images/icons/open-envelope.png');
+
+    &:hover::before {
+        left: 24px;
+        top: 26px;
+        width: 150px;
+    }
+}
+
+.control-bar-set-all-as-unread {
+    margin-left: 12px;
+    background-image: url('/images/icons/envelope.png');
+
+    &:hover::before {
+        left: 24px;
+        top: 26px;
+        width: 160px;
+    }
+}
+
+.short-massege {
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    font-size: 10px;
+    padding: 2px 4px;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-height: 13px;
+    width: 100%;
+    height: 30px;
+    border-top: 2px solid grey;
+    background-color: #FFF;
+}

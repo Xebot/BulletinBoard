@@ -1,0 +1,64 @@
+﻿@model UserAdvertsViewModel
+@using Authentication.AppServices.Extensions
+
+@if (Model != null)
+{
+    <h2 class="page-header">Все объявления пользователей</h2>
+    <div class="adverts">
+        @foreach (var item in Model.Ads)
+        {
+            <div class="advert">
+                <div class="advert-photo">
+                    <img src="/images/adverts-images/@item.PrimaryImageUrl" class="advert-photo-image">
+                </div>
+                <div class="advert-title">
+                    <a href="/advert/@item.Id" class="advert-title-link">@item.Title</a>
+                </div>
+                <div class="advert-price">
+                    <p class="advert-price-text">@item.Price.ToString("N2") ₽</p>
+                </div>
+                <div class="advert-date">
+                    <p class="advert-date-text">@item.PublicationDate.ToLongDateString()</p>
+                </div>
+                <div class="advert-short-description">
+                    <p class="advert-short-description-text">@item.ShortDescription</p>
+                </div>
+                <div class="buttons-delete-edit-area">
+                    @if (item.Status == "Published")
+                    {
+                        <a href="/admin/Unpublish/@item.Id" class="button-edit">Снять с публикации</a>
+                    }
+                    else
+                    {
+                        <a href="/admin/Unpublish/@item.Id" class="button-edit">Опубликовать</a>
+                    }
+                    @if (item.Status != "Deleted")
+                    {
+                        <a href="/admin/delete/@item.Id" class="button-delete">Удалить объявление</a>
+                    }
+                    else
+                    {
+                        <a href="/admin/delete/@item.Id" class="button-delete">Восстановить объявление</a>
+                    }
+                </div>
+                <div class="buttons-delete-edit-area">                   
+                        <a href="/admin/deleteTotal/@item.Id" class="button-delete">Удалить из базы</a>           
+                </div>
+            </div>
+        }
+    </div>
+    @if (Model.AdsNumber > Model.advertsPerPageNumber)
+    {
+        <div class="pagination-block">
+            <ul class="pagination-block-list">
+                @for (int i = 1; i <= Math.Ceiling((double)Model.AdsNumber / (double)Model.advertsPerPageNumber); i++)
+                {
+                    <li class="pagination-block-list-item">
+                        <a href="/Admin/Index?pageNumber=@i" class="@(Model.PageNumber == i ? "pagination-block-list-item-link-active" : "pagination-block-list-item-link")">@i</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}
+

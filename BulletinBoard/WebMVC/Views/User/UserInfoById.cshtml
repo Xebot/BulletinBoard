@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model UserInfoViewModel
+
+@{
+    ViewData["Title"] = @Localizer["pageTitle"];
+}
+
+<h1 class="page-header" align="center">@Localizer["pageHeader"] @Model.FIO</h1>
+
+<div class="user-info">
+    <div class="user-info-name">
+        <p class="user-info-name-header">@Localizer["userName"]</p>
+        <div class="user-info-name-value">@Model.FIO</div>
+    </div>
+    <div class="user-info-name">
+        <p class="user-info-name-header">@Localizer["email"]</p>
+        <div class="user-info-name-value">@Model.Email</div>
+    </div>
+    <div class="user-info-name">
+        <p class="user-info-name-header">@Localizer["phone"]</p>
+        <div class="user-info-name-value">@Model.Phone</div>
+    </div>
+    <div class="user-info-name">
+        <p class="user-info-name-header">@Localizer["region"]</p>
+        <div class="user-info-name-value">@Model.Region</div>
+    </div>
+    <div class="user-info-name">
+        <p class="user-info-name-header">@Localizer["adress"]</p>
+        <div class="user-info-name-value">@Model.UserAdress</div>
+    </div>
+</div>

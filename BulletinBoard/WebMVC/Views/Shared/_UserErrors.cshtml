@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+
+@if (ViewBag.Errors != null)
+{
+<center>
+    <h3 style="font-weight: bold;">@Localizer["errorsHeader"]:</h3>
+    <ul style="list-style-type: none;">
+        @foreach (var s in ViewBag.Errors)
+        {
+            <li style="color: red; padding: 8px;">@s</li>
+
+        }
+    </ul>
+    @if (ViewBag.Pic != null)
+    {
+        <img src="~/images/401.png">
+
+    }
+</center>
+}

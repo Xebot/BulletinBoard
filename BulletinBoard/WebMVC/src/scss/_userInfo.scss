@@ -1,0 +1,45 @@
+﻿.user-info {
+    max-width: 560px;
+    margin: 0 auto;
+    padding-bottom: 12px;
+}
+
+.user-info-name,
+.user-info-email,
+.user-info-phone,
+.user-info-region,
+.user-info-adress {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    margin: 16px 0;
+    padding: 0 16px;
+}
+
+.user-info-name-header,
+.user-info-email-header,
+.user-info-phone-header,
+.user-info-region-header,
+.user-info-adress-header {
+    display: block;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    padding-right: 12px;
+}
+
+.user-info-name-value,
+.user-info-email-value,
+.user-info-phone-value,
+.user-info-region-value,
+.user-info-adress-value {
+    width: calc(100%);
+    height: 44px;
+    border: 2px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 12px;
+}

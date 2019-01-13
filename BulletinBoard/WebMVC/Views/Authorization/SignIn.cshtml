@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model SignInViewModel
+@{
+    ViewData["Title"] = @Localizer["pageTitle"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_Good")
+
+@Html.Partial("_UserErrors")
+@Html.Partial("_Good")
+<h1 class="page-header" align="center">@Localizer["pageHeader"]</h1>
+<form action="/Authorization/SignIn" method="post" class="sign-in-form">
+    @Html.AntiForgeryToken()
+    <div class="sign-in-form-email">
+        <label for="sign-in-form-email-input" class="sign-in-form-email-lable">@Localizer["email"]</label>
+        <input type="text" asp-for="Email" name="Email" id="sign-in-form-email-input" required>
+    </div>
+    <br>
+    <div class="sign-in-form-password">
+        <label for="sign-in-form-password-input" class="sign-in-form-password-lable">@Localizer["password"]</label>
+        <input type="password" asp-for="Password" name="Password" id="sign-in-form-password-input" required>
+    </div>
+    <br>
+    <div class="sign-in-form-submit-button-container">
+        <input type="submit" value="@Localizer["submit"]" id="sign-in-form-submit-button">
+    </div>
+</form>
+
+<div class="social-networks-authorization">
+    <a href="https://oauth.vk.com/authorize?client_id=6750965&display=page&redirect_uri=http://localhost:59212/Authorization/ExternalSignIn&response_type=code&scope=email&v=5.87">
+        <img src="~/images/vk.png" />
+    </a>
+    <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c142fed3-e507-4f17-890d-6e884d4d804b&response_type=code&redirect_uri=http://localhost:59212/Authorization/ExternalSignInMS&response_mode=query&scope=openid%20profile%20email&state=12345">
+        <img src="~/images/ms.png">
+    </a>
+    <a href="https://accounts.google.com/o/oauth2/auth?redirect_uri=http://localhost:59212/Authorization/ExternalSignInGoogle&response_type=code&client_id=1048364260034-5o18eo85vvjc3qqdlmor5nfips70q2e3.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile">
+        <img src="~/images/g.png">
+    </a>
+</div>
+
+    </div>
+    </div>
+}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var msg = '@TempData["Message"]';
+            if (msg != '') { alert(msg) }
+        ;
+    });
+    </script>

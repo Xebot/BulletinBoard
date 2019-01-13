@@ -1,0 +1,392 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer
+@model WebMVC.Models.AdvertViewModel
+@{
+    ViewData["Title"] = Model.advert.Title;
+}
+
+<h1 class="page-header">@Model.advert.Title</h1>
+<div class="advert-page">
+    <div class="advert-page-main">
+        <div class="advert-page-photos">
+            <div class="advert-page-big-photo">
+                <img src="/images/adverts-images/@Model.advert.PrimaryImageUrl" class="advert-page-big-photo-image">
+            </div>
+            <div class="advert-page-small-photos">
+                <div class="advert-page-small-photo">
+                    <img src="/images/adverts-images/@Model.advert.PrimaryImageUrl" class="advert-page-small-photo-image">
+                </div>
+                @foreach (var imageUrl in @Model.advert.ImagesUrl.Split("||".ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <div class="advert-page-small-photo">
+                        <img src="/images/adverts-images/@imageUrl" class="advert-page-small-photo-image">
+                    </div>
+                }
+            </div>
+        </div>
+        <hr>
+        <div class="advert-page-information">
+            <p class="advert-page-information-title">@Localizer["description"]</p>
+            <p class="advert-page-information-text">@Model.advert.Description</p>
+        </div>
+        <hr>
+
+        <div class="comments-block">
+            <div class="comments-block-title">
+                @Localizer["comments"]
+            </div>
+            <hr>
+            <div class="comments" advert-id="@Model.advert.Id" showed-adverts-number="@Model.advert.Comments.Count()" adding-adverts-number="@Model.addingCommentsNumber">
+                @foreach (var comment in Model.advert.Comments)
+                {
+                    <div class="comment">
+                        <div class="comment-header">
+                            <div class="comment-header-author-image-block">
+                                @comment.UserName[0]
+                            </div>
+                            <div class="comment-header-author-name-and-date">
+                                <div class="comment-header-author-name">
+                                    <a href="/user/userinfobyid/@comment.UserId">@comment.UserName</a>
+                                </div>
+                                <div class="comment-header-date">
+                                    @comment.PublicationDate.ToLocalTime().ToLocalTime().ToLongDateString(), @comment.PublicationDate.ToLocalTime().ToShortTimeString()
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-text">
+                            @comment.CommentText
+                        </div>
+                        <div class="comment-actions">
+                            <span class="comment-likes-number">@comment.CommentLikersNumber</span>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (comment.CommentLikers.Where(x => x.UserId == Model.currentUserId).Any())
+                                {
+                                    <span class="comment-action-like-active" comment-id="@comment.Id" advert-id="@Model.advert.Id"></span>
+                                }
+                                else
+                                {
+                                    <span class="comment-action-like" comment-id="@comment.Id" advert-id="@Model.advert.Id"></span>
+                                }
+                                <span class="comment-action-reply" comment-id="@comment.Id" advert-id="@Model.advert.Id"></span>
+                            }
+                            else
+                            {
+                                <span class="comment-action-like-disable"></span>
+                            }
+                            @if (comment.UserId == Model.currentUserId)
+                            {
+                                <a href="/advert/delete-comment-action/@comment.Id" class="comment-actions-delete"></a>
+                            }
+                        </div>
+                    </div>
+                    if (comment.CommentReplies != null)
+                    {
+                        <div class="replies">
+                            @foreach (var reply in comment.CommentReplies)
+                            {
+                                <hr style="width: 100%;">
+                                <div class="reply">
+                                    <div class="comment-header">
+                                        <div class="comment-header-author-image-block">
+                                            @reply.UserName[0]
+                                        </div>
+                                        <div class="comment-header-author-name-and-date">
+                                            <div class="comment-header-author-name">
+                                                <a href="/user/userinfobyid/@reply.UserId">@reply.UserName</a>
+                                            </div>
+                                            <div class="comment-header-date">
+                                                @reply.PublicationDate.ToLocalTime().ToLocalTime().ToLongDateString(), @reply.PublicationDate.ToLocalTime().ToShortTimeString()
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        @reply.CommentText
+                                    </div>
+                                    <div class="comment-actions">
+                                        <span class="comment-likes-number">@reply.CommentLikersNumber</span>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            @if (reply.CommentLikers.Where(x => x.UserId == Model.currentUserId).Any())
+                                            {
+                                                <span class="comment-action-like-active" comment-id="@reply.Id" advert-id="@Model.advert.Id"></span>
+                                            }
+                                            else
+                                            {
+                                                <span class="comment-action-like" comment-id="@reply.Id" advert-id="@Model.advert.Id"></span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="comment-action-like-disable"></span>
+                                        }
+                                        @if (reply.UserId == Model.currentUserId)
+                                        {
+                                            <a href="/advert/delete-comment-action/@reply.Id" class="comment-actions-delete"></a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    <hr>
+                }
+            </div>
+            @if (@Model.commentsNumber > Model.advert.Comments.Count())
+            {
+                <div class="show-all-comments">
+                    @Localizer["showMoreComments"]
+                </div>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="add-comment-block">
+                    <div class="add-comment-title">
+                        @Localizer["addComment"]
+                    </div>
+                    <form class="add-comment-form" method="Post" action="/advert/add-comment-action">
+                        <textarea name="CommentText" autocomplete="off" placeholder="@Localizer["yourComment"]" required class="add-comment-text" rows="3"></textarea>
+                        <input type="hidden" value="@Model.advert.Id" name="AdvertId">
+                        <input type="hidden" value="0" name="ParentId">
+                        <input type="submit" value="" class="add-comment-submit">
+                    </form>
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="advert-page-sidebar">
+        <div class="advert-page-sidebar-edit" style="text-align: center;">
+            @* <a href="/edit-advert/@Model.advert.Id" style="font-size: 14px; font-weight: bold; color: #FF6347; text-decoration: underline;">Редактировать объявление</a>*@
+        </div>
+        <div class="advert-page-sidebar-price">
+            <p class="advert-page-sidebar-price-title">@Localizer["price"]:</p>
+            <p class="advert-page-sidebar-price-value">@Model.advert.Price.ToString("N2") ₽</p>
+        </div>
+        <div class="advert-page-sidebar-advert-number">
+            <p class="advert-page-sidebar-advert-number-title">@Localizer["advertNumber"]:</p>
+            <p class="advert-page-sidebar-advert-number-value">№ @Model.advert.AdvertNumber</p>
+        </div>
+        <div class="advert-page-sidebar-publish-date">
+            <p class="advert-page-sidebar-publish-date-title">@Localizer["publicationDate"]:</p>
+            <p class="advert-page-sidebar-publish-date-value">
+                @Model.advert.PublicationDate.ToLocalTime().ToLongDateString() 
+                <br>
+                @Model.advert.PublicationDate.ToLocalTime().ToShortTimeString()
+            </p>
+        </div>
+        <div class="advert-page-sidebar-author">
+            <div class="advert-page-sidebar-author-name">
+                <p class="advert-page-sidebar-author-name-title">@Localizer["authorName"]:</p>
+                <p class="advert-page-sidebar-author-name-value"><a href="/user/userinfobyid/@Model.advert.UserId">@Model.advert.UserName</a></p>
+            </div>
+        </div>
+        <div class="advert-page-sidebar-phone-number">
+            <p class="advert-page-sidebar-phone-number-title">@Localizer["phoneNumber"]:</p>
+            <p class="advert-page-sidebar-phone-number-value">@Model.advert.Phone</p>
+        </div>
+        <div class="advert-page-sidebar-address">
+            <p class="advert-page-sidebar-address-title">@Localizer["address"]:</p>
+            <p class="advert-page-sidebar-address-value">@Model.advert.Address</p>
+        </div>
+        @if (Model.currentUserId == Model.advert.UserId || User.IsInRole("Admin"))
+        {
+            <div class="advert-page-sidebar-edit" style="text-align: center;">
+                <a href="/edit-advert/@Model.advert.Id" style="font-size: 14px; font-weight: bold; color: #FF6347; text-decoration: underline;">@Localizer["editAdvert"]</a>
+            </div>
+            <div class="advert-page-sidebar-edit" style="text-align: center;">
+                <a href="/home/delete/@Model.advert.Id" style="font-size: 14px; font-weight: bold; color: #FF6347; text-decoration: underline;">@Localizer["deleteAdvert"]</a>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //отобразить изображение товара в большом окне
+        $(".advert-page-small-photo-image").click(function () {
+            var smallImageSrc = $(this).attr("src");
+            $(".advert-page-big-photo-image").attr("src", smallImageSrc);
+        });
+
+        //добавить лайк
+        $(document).on('click', '.comment-action-like', function () {
+            var commentId = $(this).attr("comment-id");
+            var _this = $(this);
+            console.log(commentId);
+            $.get("/advert/add-like?commentId=" + commentId, function (jsonResult) {
+                if (jsonResult) {
+                    var likesNumer = _this.parent().children(".comment-likes-number").text();
+                    _this.parent().children(".comment-likes-number").text(Number(likesNumer) + 1);
+                    _this.addClass("comment-action-like-active").removeClass("comment-action-like");
+                }
+                else {
+                    alert("Вы уже ставили свой лайк!");
+                }
+            });
+        });
+
+        //удалить лайк
+        $(document).on('click', '.comment-action-like-active', function () {
+            var commentId = $(this).attr("comment-id");
+            var _this = $(this);
+            console.log(commentId);
+            $.get("/advert/delete-like?commentId=" + commentId, function (jsonResult) {
+                if (jsonResult) {
+                    var likesNumer = _this.parent().children(".comment-likes-number").text();
+                    _this.parent().children(".comment-likes-number").text(Number(likesNumer) - 1);
+                    _this.addClass("comment-action-like").removeClass("comment-action-like-active");
+                }
+                else {
+                    alert("Вы уже удаляли свой лайк!");
+                }
+            });
+        });
+
+        //отобразить форму ретвита
+        $(document).on('click', '.comment-action-reply', function () {
+            $(".reply-box").remove();
+            var parentId = $(this).attr("comment-id");
+            var advertId = $(this).attr("advert-id");
+            var language = '@System.Globalization.CultureInfo.CurrentCulture.Name';
+            var textboxPlaceholder;
+            if (language == "ru") {
+                textboxPlaceholder = "Ваш ответ на комментарий..."
+            }
+            else {
+                textboxPlaceholder = "Your reply..."
+            }
+            var advertComment =
+                `
+                    <div class="reply-box">
+                        <form class="add-comment-form" method="Post" action="/advert/add-comment-action">
+                            <textarea name="CommentText" autocomplete="off" placeholder="` + textboxPlaceholder + `" required class="add-comment-text" rows="3"></textarea>
+                            <input type="hidden" value="` + advertId + `" name="AdvertId">
+                            <input type="hidden" value="` + parentId + `" name="ParentId">
+                            <input type="submit" value="" class="add-comment-submit">
+                        </form>
+                    </div>
+                `;
+            $(this).parent().parent().append(advertComment);
+        });
+
+        //отобразить все комментарии
+        $(".show-all-comments").click(function () {
+            var advertId = $(".comments").attr("advert-id");
+            var showedAdvertsNumber = $(".comments").attr("showed-adverts-number");
+            var addingAdvertsNumber = $(".comments").attr("adding-adverts-number");
+            $.get("/advert/show-more-comments?advertId=" + advertId + "&showedAdvertsNumber=" + showedAdvertsNumber + "&addingAdvertsNumber=" + addingAdvertsNumber, function (jsonResult) {
+                var advertComments = "";
+                $.each(jsonResult, function (key, val) {
+                    var likeActionSpan = "";
+                    var replyActionSpan = "";
+                    var deleteActionSpan = "";
+                    if (val.isAuthorizedCurrentUser) {
+                        if (val.isLikedByUser) {
+
+                            likeActionSpan = `<span class="comment-action-like-active" comment-id="` + val.id + `" advert-id="` + val.advertId + `"></span>`;
+                        }
+                        else {
+                            likeActionSpan = `<span class="comment-action-like" comment-id="` + val.id + `" advert-id="` + val.advertId + `"></span>`;
+                        }
+                    }
+                    else {
+                        likeActionSpan = `<span class="comment-action-like-disable"></span>`;
+                    }
+                    if (val.isAuthorizedCurrentUser) {
+                        replyActionSpan = `<span class="comment-action-reply" comment-id="` + val.id + `" advert-id="` + val.advertId + `"></span>`;
+                    }
+                    if (val.isCurrentUserComment) {
+                        deleteActionSpan = `<a href="/advert/delete-comment-action/` + val.id + `" class="comment-actions-delete"></a>`;
+                    }
+
+                    var advertComment = `
+                        <div class="comment">
+                            <div class="comment-header">
+                                <div class="comment-header-author-image-block">
+                                    ` + val.userName[0] + `
+                                </div>
+                                <div class="comment-header-author-name-and-date">
+                                    <div class="comment-header-author-name">
+                                        <a href="/user/userinfobyid/` + val.UserId + `">
+                                            ` + val.userName + `
+                                        </a>
+                                    </div>
+                                    <div class="comment-header-date">
+                                         ` + val.localDate + `, ` + val.localTime + `
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-text">
+                                ` + val.commentText + `
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-likes-number">` + val.commentLikersNumber + `</span>
+                                ` + likeActionSpan + replyActionSpan + deleteActionSpan + `
+                            </div>
+                        </div>
+                    `;
+                    if (val.commentReplies.length != 0) {
+                        var commentReplies = "";
+                        likeActionSpan = "";
+                        deleteActionSpan = "";
+                        val.commentReplies.forEach(function (commentReply) {
+                            if (commentReply.isAuthorizedCurrentUser) {
+                                if (commentReply.isLikedByUser) {
+                                    likeActionSpan = `<span class="comment-action-like-active" comment-id="` + commentReply.id + `" advert-id="` + commentReply.advertId + `"></span>`;
+                                }
+                                else {
+                                    likeActionSpan = `<span class="comment-action-like" comment-id="` + commentReply.id + `" advert-id="` + commentReply.advertId + `"></span>`;
+                                }
+                            }
+                            else {
+                                likeActionSpan = `<span class="comment-action-like-disable"></span>`;
+                            }
+                            if (commentReply.isCurrentUserComment) {
+                                deleteActionSpan = `<a href="/advert/delete-comment-action/` + commentReply.id + `" class="comment-actions-delete"></a>`;
+                            }
+                            var commentReply = `
+                            <hr style="width: 100%;">
+                            <div class="reply">
+                                <div class="comment-header">
+                                    <div class="comment-header-author-image-block">
+                                        ` + commentReply.userName[0] + `
+                                    </div>
+                                    <div class="comment-header-author-name-and-date">
+                                        <div class="comment-header-author-name">
+                                            <a href="/user/userinfobyid/` + commentReply.UserId + `">
+                                                ` + commentReply.userName + `
+                                            </a>
+                                        </div>
+                                        <div class="comment-header-date">
+                                            ` + commentReply.localDate + `, ` + commentReply.localTime + `
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    ` + commentReply.commentText + `
+                                </div>
+                                <div class="comment-actions">
+                                    <span class="comment-likes-number">` + commentReply.commentLikersNumber + `</span>
+                                    ` + likeActionSpan + deleteActionSpan + `
+                                </div>
+                            </div>
+                        `;
+                            commentReplies += commentReply;
+                        });
+                        advertComments += advertComment + `<div class="replies">` + commentReplies + `</div><hr>`;
+                    }
+                    else {
+                        advertComments += advertComment + `<hr>`;
+                    }
+                    if (val.isLastComment === true) {
+                        $(".show-all-comments").remove();
+                    }
+                    showedAdvertsNumber = Number(showedAdvertsNumber) + 1;
+                    $(".comments").attr("showed-adverts-number", showedAdvertsNumber);
+                });
+                $(".comments").append(advertComments);
+            });
+        });
+    });
+</script>

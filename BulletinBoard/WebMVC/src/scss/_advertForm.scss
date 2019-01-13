@@ -1,0 +1,1249 @@
+﻿@media only screen and (min-width: 1024px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .advert-form {
+        width: calc(100% - 356px);
+        margin-bottom: 24px;
+    }
+
+    .neavito-rules {
+        width: 356px;
+        height: 240px;
+        margin-left: 20px;
+        border-left: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: calc(100% - 190px);
+        padding: 0 24px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        width: 190px;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 16px;
+        width: calc(100% - 190px);
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        width: calc(20% - 38px);
+        height: 80px;
+        object-position: center;
+        border: 3px solid #DC143C !important;
+    }
+
+    .advert-form-added-photo-preview {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        width: calc(20% - 38px);
+        height: 80px;
+        object-position: center;
+        border: 3px solid #32CD32;
+        position: relative;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 14px;
+        width: calc(100% - 190px);
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(25% - 38px);
+        height: 80px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 14px;
+    }
+
+    .advert-form label.error {
+        position: absolute;
+        top: 0px;
+        right: -250px;
+        color: #F08080;
+        width: 250px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1023px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .advert-form {
+        width: calc(100% - 356px);
+        margin-bottom: 24px;
+    }
+
+    .neavito-rules {
+        width: 356px;
+        height: 240px;
+        margin-left: 20px;
+        border-left: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: calc(100% - 190px);
+        height: 80px;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        width: 190px;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 14px;
+        width: calc(100% - 190px);
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(33% - 38px);
+        height: 90px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 14px;
+    }
+
+    .advert-form label.error {
+        position: absolute;
+        top: 0px;
+        right: -250px;
+        color: #F08080;
+        width: 250px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 899px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-form {
+        width: 100%;
+        margin-bottom: 24px;
+        order: 2;
+    }
+
+    .neavito-rules {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        order: 1;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: calc(100% - 190px);
+        padding: 0 24px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: calc(100% - 190px);
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: calc(100% - 190px);
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        width: 190px;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(25% - 38px);
+        height: 110px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 14px;
+    }
+
+    .advert-form label.error {
+        padding: 8px 0 0 200px;
+        color: #F08080;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 699px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-form {
+        width: 100%;
+        margin-bottom: 24px;
+        order: 2;
+    }
+
+    .neavito-rules {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        order: 1;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: 100%;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 14px;
+        width: 100%;
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(33% - 38px);
+        height: 110px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 14px;
+    }
+
+    .advert-form label.error {
+        padding: 8px 0 0 16px;
+        color: #F08080;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+@media only screen and (min-width: 430px) and (max-width: 549px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-form {
+        width: 100%;
+        margin-bottom: 24px;
+        order: 2;
+    }
+
+    .neavito-rules {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        order: 1;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: 100%;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 14px;
+        width: 100%;
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(50% - 24px);
+        height: 130px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 14px;
+    }
+
+    .advert-form label.error {
+        padding: 8px 0 0 16px;
+        color: #F08080;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+@media only screen and (max-width: 429px) {
+    .add-advert,
+    .edit-advert {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .advert-form {
+        width: 100%;
+        margin-bottom: 24px;
+        order: 2;
+    }
+
+    .neavito-rules {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 3px solid #ff8e00;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        order: 1;
+    }
+
+    .neavito-rules p {
+        margin: 8px 24px;
+        line-height: 18px;
+    }
+
+    .advert-form-contacts-email,
+    .advert-form-contacts-user-name,
+    .advert-form-contacts-phone,
+    .advert-form-title,
+    .advert-form-status,
+    .advert-form-category,
+    .advert-form-region,
+    .advert-form-price,
+    .advert-form-address,
+    .advert-form-short-description,
+    .advert-form-description,
+    .advert-form-primary-photo,
+    .advert-form-photos {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        margin: 16px 0;
+        padding: 0 16px
+    }
+
+    #advert-form-contacts-email-input,
+    #advert-form-contacts-user-name-input,
+    #advert-form-contacts-phone-input,
+    #advert-form-title-input,
+    #advert-form-price-input,
+    #advert-form-address-input {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-status-container {
+        width: 100%;
+        height: 80px;
+        padding: 0 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .select-category,
+    .select-region {
+        width: 100%;
+        height: 100%;
+    }
+
+    .select-category-container,
+    .select-region-container {
+        width: 100%;
+        height: 40px;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 0 6px 0 12px;
+    }
+
+    #advert-form-short-description-input,
+    #advert-form-description-input {
+        width: 100%;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 12px;
+        resize: vertical;
+    }
+
+    .advert-form-contacts-email-lable,
+    .advert-form-contacts-user-name-lable,
+    .advert-form-contacts-phone-lable,
+    .advert-form-title-lable,
+    .advert-form-status-lable,
+    .advert-form-category-lable,
+    .advert-form-region-lable,
+    .advert-form-price-lable,
+    .advert-form-address-lable,
+    .advert-form-short-description-lable,
+    .advert-form-description-lable,
+    .advert-form-primary-photo-lable,
+    .advert-form-photos-lable {
+        display: block;
+        align-items: center;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        padding-right: 12px;
+    }
+
+    #advert-form-primary-photo-input,
+    #advert-form-photos-input {
+        font-size: 12px;
+        width: 100%;
+        height: 24px;
+    }
+
+    .advert-form-added-primary-photo-preview,
+    .advert-form-added-photo-preview,
+    .advert-photo-in-db {
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 16px;
+        object-position: center;
+        width: calc(50% - 24px);
+        height: 90px;
+    }
+
+    .main-image-info-text,
+    .additional-image-info-text,
+    .downloaded-additional-image-info-text {
+        padding-left: 8px;
+        font-size: 12px;
+    }
+
+    .advert-form label.error {
+        padding: 8px 0 0 16px;
+        color: #F08080;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .advert-form input.error:not(#advert-form-primary-photo-input),
+    .advert-form textarea.error {
+        border: 2px solid #F08080 !important;
+        background-color: #FFC0CB !important;
+    }
+}
+
+.advert-form-contacts {
+    border: 2px solid #e1e1e1;
+    background-color: #f7fcff;
+    padding: 16px 0;
+    margin-bottom: 32px;
+}
+
+.advert-form-contacts-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 24px 24px;
+}
+
+.advert-form-status-radio-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;    
+}
+
+.advert-form-status-published-lable,
+.advert-form-status-unactive-lable,
+.advert-form-status-deleted-lable {
+    width: auto;
+}
+
+.advert-form-status-radio {
+    display: block;
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+}
+
+.advert-form-photos {
+    margin-top: 20px;
+}
+
+.advert-form-added-photos-header {
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    margin: 24px 24px 8px 24px;
+}
+
+.advert-form-added-photos-preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 24px;
+    border: 2px solid #e1e1e1;
+    background-color: #f7fcff;
+    margin-top: 24px;
+}
+
+.advert-form-added-photos-preview-info {
+    margin-top: 24px;
+    width: 100%;
+}
+
+.advert-form-added-photos-preview-hidden {
+    display: none;
+}
+
+.advert-form-added-primary-photo-preview {
+    border: 3px solid #DC143C !important;
+}
+
+.advert-form-added-photo-preview {
+    border: 3px solid #32CD32;
+}
+
+.advert-photo-in-db {
+    border: 3px solid #1E90FF;
+    position: relative;
+}
+
+.advert-form-added-photo-preview-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.advert-photo-in-db-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.advert-photo-rubbish-bin-icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
+    background-image: url("/images/icons/delete.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.advert-photo-in-db-crossed-lines {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.advert-photo-rubbish-bin-icon:hover {
+    cursor: pointer;
+    background-size: 22px 22px;
+}
+
+
+
+.advert-form-added-primary-photo-preview-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.delete-uploaded-image-button {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    top: 0;
+    right: 2px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#advert-form-submit-button {
+    margin: 16px 0 16px 0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 24px;
+    background: #fcc226;
+    border-radius: 4px;
+    float: right;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.main-image-info,
+.additional-image-info,
+.downloaded-additional-image-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4px 24px;
+}
+
+.main-image-info-square {
+    display: block;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: #DC143C;
+}
+
+.additional-image-info-square {
+    display: block;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: #32CD32;
+}
+
+.downloaded-additional-image-info-square {
+    display: block;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: #1E90FF;
+}
+
+.main-image-info-separator,
+.additional-image-info-separator,
+.downloaded-additional-image-info-separator {
+    padding-left: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#login-password-input {
+    width: 436px;
+    height: 40px;
+    border: 2px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 12px;
+    margin: 0px auto;
+}
+
+

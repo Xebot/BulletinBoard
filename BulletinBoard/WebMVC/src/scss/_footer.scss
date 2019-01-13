@@ -1,0 +1,115 @@
+﻿@media only screen and (min-width: 700px) {
+    .footer-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-left-copyright {
+        font-size: 14px;
+    }
+
+    .footer-right-contacts-header {
+        text-align: right;
+    }
+
+    .footer-right-contacts-phone {
+        text-align: right;
+    }
+
+    .footer-right-contacts-email {
+        text-align: right;
+    }
+
+    .footer-right-counters {
+        text-align: right;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    .footer-container {
+        max-width: 699px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .footer-left-copyright {
+        font-size: 14px;
+    }
+}
+
+/* ОБЩИЕ СТИЛИ */
+.footer {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-top: 1px solid #d8d8d8;
+    padding: 0 24px;
+}
+
+.footer-left {
+    min-width: 360px;
+    width: 360px;
+}
+
+.footer-left-languages {
+    margin: 8px 0 4px 0;
+    display: flex;
+}
+
+.footer-left-languages-link {
+    display: block;
+    text-align: center;
+    width: 40px;
+    margin-right: 16px;
+}
+
+.footer-left-social-networks {
+    margin: 8px 0;
+}
+
+.footer-left-social-networks-link {
+    margin: 0 12px 0 0;
+}
+
+.footer-left-copyright {
+    margin: 0;
+    color: #a1a1a1;
+}
+
+.footer-left-copyright-link {
+    text-decoration: none;
+    color: #a1a1a1;
+}
+
+.footer-right {
+    max-width: 664px;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-right-contacts {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.footer-right-contacts-header {
+    color: #a1a1a1;
+    font-weight: bold;
+}
+
+.footer-right-contacts-phone {
+    color: #a1a1a1;
+    margin-top: 4px;
+}
+
+.footer-right-contacts-email {
+    color: #a1a1a1;
+    margin-top: 4px;
+}
